@@ -1,0 +1,76 @@
+/* Explain: App-specific layout utilities (add as needed). */
+.shell {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section {
+    padding-block: 4.5rem;
+}
+
+.hero-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.hero-media {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+}
+
+.hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(20, 19, 38, 0.95) 0%, rgba(76, 29, 149, 0.84) 48%, rgba(20, 19, 38, 0.55) 100%);
+}
+
+.event-cover {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.event-cover-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(20, 19, 38, 0.93) 0%, rgba(76, 29, 149, 0.8) 55%, rgba(20, 19, 38, 0.62) 100%);
+}
+
+.event-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+    .event-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .event-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 6rem;
+}

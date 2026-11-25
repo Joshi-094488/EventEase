@@ -1,0 +1,24 @@
+/* Explain: Theme design tokens (colors, fonts) — single source of truth. */
+:root {
+    --primary-color: #6d28d9;
+    --primary-hover: #5b21b6;
+    --primary-soft: #ede9fe;
+    --secondary-color: #141326;
+    --accent-color: #f59e0b;
+    --accent-hover: #d97706;
+    --background-color: #ffffff;
+    --surface-color: #f8f6ff;
+    --surface-2: #f0ecff;
+    --text-color: #141326;
+    --text-muted: #6b7280;
+    --border-color: #e7e3f7;
+    --font-heading: 'Sora', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+    --shadow-sm: 0 1px 2px rgba(20, 19, 38, 0.06);
+    --shadow-md: 0 16px 40px -22px rgba(76, 29, 149, 0.35);
+    --shadow-lg: 0 34px 70px -30px rgba(76, 29, 149, 0.45);
+    --gradient-brand: linear-gradient(135deg, #6d28d9 0%, #9333ea 55%, #f59e0b 125%);
+}

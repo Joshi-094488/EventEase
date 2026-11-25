@@ -1,0 +1,52 @@
+// Explain: App entry point with navigation and cart updates.
+document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('navToggle');
+    var panel = document.getElementById('mobileNav');
+
+    function closeNav() {
+        if (!panel) return;
+        panel.classList.add('hidden');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (toggle && panel) {
+        toggle.addEventListener('click', function () {
+            if (panel.classList.contains('hidden')) {
+                panel.classList.remove('hidden');
+                toggle.setAttribute('aria-expanded', 'true');
+            } else {
+                closeNav();
+            }
+        });
+
+        panel.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', closeNav);
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') closeNav();
+        });
+
+        document.addEventListener('click', function (event) {
+            if (panel.classList.contains('hidden')) return;
+            if (panel.contains(event.target) || toggle.contains(event.target)) return;
+            closeNav();
+        });
+    }
+
+    if (window.OrderSystem && typeof window.OrderSystem.getCart === 'function') {
+        window.OrderSystem.getCart().then(function (res) {
+            if (!res || !res.success || !Array.isArray(res.cart)) return;
+            var total = res.cart.reduce(function (sum, row) {
+                return sum + Number(row.count || 0);
+            }, 0);
+            document.querySelectorAll('[data-cart-count]').forEach(function (el) {
+                el.textContent = String(total);
+                el.classList.toggle('is-on', total > 0);
+            });
+        }).catch(function () {});
+    }
+
+    var yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+});
